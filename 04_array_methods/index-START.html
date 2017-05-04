@@ -40,6 +40,10 @@
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+     const names = inventors.map(function(person){
+      return `${person.first} ${person.last}`;
+    })
+    console.log(names);
 
 
     // Array.prototype.sort()
