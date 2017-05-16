@@ -48,14 +48,26 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 
   // my way
-  const remove_article = bands.map(name => {
+  /*const remove_article = bands.map(name => {
     const split_name = name.split(' ');
     if(split_name[0] === 'The' || split_name[0] === 'An' || split_name[0] === 'A'){
       split_name.splice(0,1);
     }
     return split_name.join(' ');
   })
-  console.log(remove_article.sort());
+  console.log(remove_article.sort());*/
+
+  function strip(bandName){
+    return bandName.replace(/^(a |the |an )/i, '').trim();
+  }
+
+  const sortedBands = bands.sort((a,b) =>  strip(a) > strip(b) ? 1: -1);
+
+  document.querySelector('#bands').innerHTML =
+    sortedBands
+      .map(band => `<li>${band}</li>`)
+      .join('');
+
 
 </script>
 
