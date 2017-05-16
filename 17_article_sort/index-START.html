@@ -47,6 +47,16 @@
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
 
+  // my way
+  const remove_article = bands.map(name => {
+    const split_name = name.split(' ');
+    if(split_name[0] === 'The' || split_name[0] === 'An' || split_name[0] === 'A'){
+      split_name.splice(0,1);
+    }
+    return split_name.join(' ');
+  })
+  console.log(remove_article.sort());
+
 </script>
 
 </body>
