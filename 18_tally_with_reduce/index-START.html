@@ -182,6 +182,34 @@
     </li>
   </ul>
 <script>
+
+
+    const timeblocks = Array.from(document.querySelectorAll('[data-time]'));
+    const seconds = timeblocks.map( block => block.dataset.time);
+    //console.log(secs);
+
+    // My Method
+    /*function convertToSeconds (time){
+      let units = time.split(":");
+      let totalseconds = parseInt(units[0])*60 + parseInt(units[1]);
+      return totalseconds;
+    };
+
+    const secondsArr = seconds.map(time => convertToSeconds(time));
+    console.log(secondsArr);
+
+    const sum = secondsArr.reduce((acc, val) => {return acc + val}, 0);
+
+    console.log("SUM: " + sum);
+    const totalMins = (sum - (sum%60))/60;
+
+    console.log(totalMins);
+    const remainingSeconds = sum%60;
+
+    console.log(`Total Time: ${totalMins}:${remainingSeconds}`);*/
+
+
+
 </script>
 </body>
 </html>
