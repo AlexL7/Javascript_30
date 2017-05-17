@@ -184,18 +184,19 @@
 <script>
 
 
-    const timeblocks = Array.from(document.querySelectorAll('[data-time]'));
-    const seconds = timeblocks.map( block => block.dataset.time);
-    //console.log(secs);
 
     // My Method
-    /*function convertToSeconds (time){
+    /*const timeblocks = Array.from(document.querySelectorAll('[data-time]'));
+    const secs = timeblocks.map( block => block.dataset.time);
+
+
+    function convertToSeconds (time){
       let units = time.split(":");
       let totalseconds = parseInt(units[0])*60 + parseInt(units[1]);
       return totalseconds;
     };
 
-    const secondsArr = seconds.map(time => convertToSeconds(time));
+    const secondsArr = secs.map(time => convertToSeconds(time));
     console.log(secondsArr);
 
     const sum = secondsArr.reduce((acc, val) => {return acc + val}, 0);
@@ -207,6 +208,28 @@
     const remainingSeconds = sum%60;
 
     console.log(`Total Time: ${totalMins}:${remainingSeconds}`);*/
+
+    //Video Method
+
+    const timeblocks = Array.from(document.querySelectorAll('[data-time]'));
+    const seconds = timeblocks
+      .map( block => block.dataset.time)
+      .map(timeCode =>{
+        const [mins, secs] = timeCode.split(":").map(parseFloat);
+        return (mins * 60) + secs;
+      })
+      .reduce((total, vidSeconds) => total + vidSeconds);
+
+
+    let secondsLeft = seconds;
+    const hours = Math.floor(secondsLeft / 3600 );
+    secondsLeft = secondsLeft % 3600;
+
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60 ;
+
+    console.log(`${hours}:${mins}:${secondsLeft}`);
+
 
 
 
