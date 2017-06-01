@@ -28,9 +28,9 @@ function getVideo(){
       let pixels = ctx.getImageData(0, 0, width, height);
 
 
-        pixels = greenScreen(pixels);
+       //pixels = greenScreen(pixels);
       //pixels = redEffect(pixels);
-      //pixels = rgbSplit(pixels);
+      pixels = rgbSplit(pixels);
       //ctx.globalAlpha = 0.3;
       ctx.putImageData(pixels, 0, 0);
 
