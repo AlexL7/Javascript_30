@@ -37,6 +37,8 @@
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
   let lastHole;
+  let timeUp = false;
+  let score = 0;
 
 
   function randomTime(min, max){
@@ -61,9 +63,26 @@
     setTimeout(() => {
       hole.classList.remove('up');
       if(!timeUp) peep();
-      peep();
     }, time);
   }
+
+  function startGame() {
+    scoreBoard.textContent = 0;
+    score = 0;
+    timeUp = false;
+
+    peep();
+    setTimeout(()=> timeUp = true, 10000);
+  }
+
+  function whack(e) {
+    if(!e.isTrusted) return; //checks for cheater
+    score++;
+    this.classList.remove('up');
+    scoreBoard.textContent = score;
+  }
+
+  moles.forEach(mole => mole.addEventListener('click', whack))
 
 </script>
 </body>
